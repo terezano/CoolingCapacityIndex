@@ -1,0 +1,24 @@
+name: CCi_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - earthpy=0.9.*
+  - fiona=1.8.*
+  - geopandas=0.8.*
+  - geos=3.8.*
+  - gdal=3.1.*
+  - imagecodecs=2020.5.*
+  - ipykernel=5.3.*
+  - ipython=7.18.*
+  - ipywidgets=7.5.*
+  - numpy=1.19.*
+  - pycrs=1.0.*
+  - python=3.8.*
+  - rasterio=1.1.*
+  - requests=2.24.*
+  - scikit-image=0.17.*
+  - scipy=1.5.*
+  - shapely=1.7.*
+  - tifffile=2020.10.*
+

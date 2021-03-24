@@ -52,7 +52,6 @@ def fGeoref(input_array, src_dataset_path, output_path):
         
         return True
 
-
 """
 input_tif       -- Input TIF photo 
 output_tif      -- Output TIF photo
@@ -110,8 +109,6 @@ def fndvi(red_path, nir_path, out_folder, name = "_NDVI"):
     zero_exception = np.seterr(all = "ignore")
     red_array = np.array(red).astype(np.float32)
     nir_array = np.array(nir).astype(np.float32)
-    
-  
     
     result_ndvi = np.divide((nir_array-red_array),(red_array+nir_array))
       
