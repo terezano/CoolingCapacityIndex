@@ -45,14 +45,6 @@ OUT_FOLDER = (os.path.join(SCRIPT_DIR, r'output_L8'))
 CLIPPED = (os.path.join(SCRIPT_DIR, r'output_L8'))
 DEM = (os.path.join(SCRIPT_DIR, r'input_L8\DEM_Olomouc.TIF'))
 
-
-df_METEODATA = pd.read_csv((os.path.join(SCRIPT_DIR, 'KGI_libelium_T_RH.csv')), delimiter =',')
-df_METEODATA["datetime_1"] = pd.to_datetime(df_METEODATA['time'])
-df_METEODATA.drop(["time", "id"], 1, inplace=True)
-
-
-df_RadShortIn = pd.read_csv((os.path.join(SCRIPT_DIR, 'ShortInRad.csv')), delimiter =',')
-
 """
 EMIS_ATM          -- Emmisivity of atmosphere
 """
@@ -78,6 +70,7 @@ L8_dict = {}
 ############################################################################################
 
 #Find all paths with valid sufix (TIF for L8)
+# e.g. find_path(IN_FOLDER, ".TIF")
 def find_path(input_folder, file_name):
     
     path_list_folder = []
@@ -90,6 +83,13 @@ def find_path(input_folder, file_name):
                 path_list_folder.append(os.path.join(root, name))
         #pprint.pprint(path_list_folder)
     return path_list_folder
+
+#Gather sensor data from csv to Panda DataFrame[sensor, value, datetime_1]
+df_METEODATA = pd.read_csv((os.path.join(SCRIPT_DIR, 'KGI_libelium_T_RH.csv')), delimiter =',')
+df_METEODATA["datetime_1"] = pd.to_datetime(df_METEODATA['time'])
+df_METEODATA.drop(["time", "id"], 1, inplace=True)
+
+df_RadShortIn = pd.read_csv((os.path.join(SCRIPT_DIR, 'ShortInRad.csv')), delimiter =',')
 
 #List of strings paths to Landsat Images
 landsat_tif = find_path(IN_FOLDER, ".TIF")
